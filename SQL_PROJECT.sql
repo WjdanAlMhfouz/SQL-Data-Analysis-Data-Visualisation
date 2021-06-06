@@ -12,7 +12,7 @@ ORDER BY number_of_film DESC
 
 -- How many film rented per year in Saudi Arabia?\
 
-SELECT date_part('year', r.rental_date) AS year,
+SELECT to_char(date(r.rental_date),'YYYY-MM') as year_month,
        co.country,
        count(*) number_of_rent
 FROM rental r, (address a
@@ -21,7 +21,7 @@ FROM rental r, (address a
 WHERE co.country LIKE 'Saudi Arabia'
 GROUP BY 1,
          2
-ORDER BY YEAR
+
 
 -- What are the number of film kids allowed to attend?\
 
